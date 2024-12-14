@@ -1,0 +1,30 @@
+version: '3'
+set: [errexit, pipefail, nounset]
+shopt: [globstar]
+tasks:
+  init:
+    desc: ✅  Setup project
+    silent: true
+    run: 'once'
+    deps:
+      - init:lefthooks
+      - init:npm
+  init:lefthooks:
+    silent: true
+    internal: true
+    run: 'once'
+    cmds:
+      - lefthook install
+    sources:
+      - ./lefthook.yml
+      - ./flake.nix
+      - ./flake.lock
+  init:npm:
+    silent: true
+    internal: true
+    run: 'once'
+    cmds:
+      - npm install
+    sources:
+      - ./package-lock.json
+      - ./package.json
