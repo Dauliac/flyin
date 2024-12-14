@@ -20,6 +20,7 @@
             yamlfmt
             typos
             treefmt
+            git
           ]
           ++ config.buildPackages;
         shellHook = ''
