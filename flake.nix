@@ -13,7 +13,11 @@
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (_: {
-      systems = [ "x86_64-linux" ];
+      systems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
       imports = [
         ./nix
       ];
