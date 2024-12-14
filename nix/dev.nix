@@ -21,6 +21,7 @@
             typos
             treefmt
             git
+            prefetch-npm-deps
           ]
           ++ config.buildPackages;
         shellHook = ''

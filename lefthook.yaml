@@ -23,3 +23,11 @@ pre-commit:
       tags: formatter
       run: nix fmt
       stage_fixed: true
+    code:npm-deps-hash:
+      tags: code
+      run: prefetch-npm-deps package-lock.json > ./nix/npm-deps-hash.txt
+      glob: 'package-lock.json'
+      stage_fixed: true
+    build:
+      tags: build
+      run: nix build --no-link
