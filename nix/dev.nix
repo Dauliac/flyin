@@ -24,7 +24,8 @@
           ]
           ++ config.buildPackages;
         shellHook = ''
-          ${pkgs.go-task}/bin/task init --verbose --output prefixed
+          ${pkgs.go-task}/bin/task --verbose --output prefixed
+          ${pkgs.go-task}/bin/task --list
         '';
       };
     };

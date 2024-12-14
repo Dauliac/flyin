@@ -2,7 +2,7 @@ version: '3'
 set: [errexit, pipefail, nounset]
 shopt: [globstar]
 tasks:
-  init:
+  default:
     desc: ✅  Setup project
     silent: true
     run: 'once'
@@ -28,3 +28,9 @@ tasks:
     sources:
       - ./package-lock.json
       - ./package.json
+  format:
+    silent: true
+    desc: 📝 Format project files
+    run: 'once'
+    cmds:
+      - nix fmt
