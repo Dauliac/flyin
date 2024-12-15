@@ -1,48 +1,48 @@
 {
-	"global": {
-		"reference": {
-			"color": {
-				"pink": {
-					"$type": "color",
-					"$value": "#ff99fa"
-				},
-				"blue": {
-					"$type": "color",
-					"$value": "#82d8ff"
-				},
-				"green": {
-					"$type": "color",
-					"$value": "#6bffce"
-				}
-			}
-		},
-		"system": {
-			"color": {
-				"primary": {
-					"$type": "color",
-					"$value": "{reference.color.pink}"
-				},
-				"secondary": {
-					"$type": "color",
-					"$value": "{reference.color.blue}"
-				},
-				"tertiary": {
-					"$type": "color",
-					"$value": "{reference.color.green}"
-				}
-			}
-		},
-		"component": {
-			"color": {
-				"title-1": {
-					"$type": "color",
-					"$value": "{system.color.secondary}"
-				}
-			}
-		}
-	},
-	"$themes": [],
-	"$metadata": {
-		"tokenSetOrder": ["global"]
-	}
+  "global": {
+    "reference": {
+      "color": {
+        "pink": {
+          "$type": "color",
+          "$value": "#ff99fa"
+        },
+        "blue": {
+          "$type": "color",
+          "$value": "#82d8ff"
+        },
+        "green": {
+          "$type": "color",
+          "$value": "#6bffce"
+        }
+      }
+    },
+    "system": {
+      "color": {
+        "primary": {
+          "$type": "color",
+          "$value": "{reference.color.pink}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{reference.color.blue}"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "{reference.color.green}"
+        }
+      }
+    },
+    "component": {
+      "color": {
+        "title-1": {
+          "$type": "color",
+          "$value": "{system.color.secondary}"
+        }
+      }
+    }
+  },
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": ["global"]
+  }
 }

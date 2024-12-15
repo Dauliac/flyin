@@ -1,18 +1,18 @@
-version: '3'
+version: "3"
 set: [errexit, pipefail, nounset]
 shopt: [globstar]
 tasks:
   default:
     desc: ✅  Setup project
     silent: true
-    run: 'once'
+    run: "once"
     deps:
       - init:lefthooks
       - init:npm
   init:lefthooks:
     silent: true
     internal: true
-    run: 'once'
+    run: "once"
     cmds:
       - lefthook install
     sources:
@@ -22,7 +22,7 @@ tasks:
   init:npm:
     silent: true
     internal: true
-    run: 'once'
+    run: "once"
     cmds:
       - npm install
     sources:
@@ -31,6 +31,6 @@ tasks:
   format:
     silent: true
     desc: 📝 Format project files
-    run: 'once'
+    run: "once"
     cmds:
       - nix fmt

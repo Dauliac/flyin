@@ -32,16 +32,39 @@ in
       ...
     }:
     {
+      packages.npmDeps = pkgs.importNpmLock {
+        npmRoot = ../.;
+      };
+      packages.all = pkgs.buildNpmPackage {
+        pname = "all";
+        version = (builtins.fromJSON (builtins.readFile ../package.json)).version;
+        src = ../.;
+        npmDeps = config.packages.npmDeps;
+        npmConfigHook = pkgs.importNpmLock.npmConfigHook;
+        installPhase = ''
+          mkdir -p $out/
+          cp -rv * $out/
+          cp -rv .svelte-kit $out/
+        '';
+      };
+      packages.storybook = pkgs.buildNpmPackage {
+        pname = "storybook";
+        version = (builtins.fromJSON (builtins.readFile ../package.json)).version;
+        src = ../.;
+        npmDeps = config.packages.npmDeps;
+        npmConfigHook = pkgs.importNpmLock.npmConfigHook;
+        npmBuildScript = "build-storybook";
+        installPhase = ''
+          mkdir -p $out/
+          cp -rv storybook-static/* $out/
+        '';
+      };
       packages.landing = pkgs.buildNpmPackage {
         pname = "landing";
-        version = "0.0.1"; # TODO: read from package.json
+        version = (builtins.fromJSON (builtins.readFile ../package.json)).version;
         src = ../.;
-        # NOTE: Generate a new hash using:
-        #   nix develop
-        #   npm i --package-lock-only
-        #   prefetch-npm-deps package-lock.json
-        # npmDepsHash = "sha256-yy5KszdMYWxflTl6rJDdUUpaIPWsYP8Xa4DIpdWF3fo=";
-        npmDepsHash = builtins.readFile ./npm-deps-hash.txt;
+        npmDeps = config.packages.npmDeps;
+        npmConfigHook = pkgs.importNpmLock.npmConfigHook;
         installPhase = ''
           mkdir -p $out/
           cp -rv .svelte-kit/* $out/

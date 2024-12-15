@@ -1,12 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}:
-let
-  inherit (lib) mkOption mdDoc;
-  inherit (inputs.flake-parts.lib) mkPerSystemOption;
-in
+{ inputs, ... }:
 {
   imports = [
     inputs.treefmt-nix.flakeModule
@@ -27,6 +19,10 @@ in
         programs = {
           prettier = {
             enable = true;
+            settings.plugins = [
+              "${config.packages.all}/node_modules/prettier-plugin-tailwindcss/dist/index.mjs"
+              "${config.packages.all}/node_modules/prettier-plugin-svelte/plugin.js"
+            ];
             includes = [
               "*.cjs"
               "*.css"

@@ -1,94 +1,94 @@
 {
-	"reference": {
-		"color": {
-			"pink": {
-				"$type": {
-					"value": "color",
-					"type": "other"
-				},
-				"$value": {
-					"value": "#ff99fa",
-					"type": "other"
-				}
-			},
-			"blue": {
-				"$type": {
-					"value": "color",
-					"type": "other"
-				},
-				"$value": {
-					"value": "#82d8ff",
-					"type": "other"
-				}
-			},
-			"green": {
-				"$type": {
-					"value": "color",
-					"type": "other"
-				},
-				"$value": {
-					"value": "#6bffce",
-					"type": "other"
-				}
-			}
-		}
-	},
-	"system": {
-		"color": {
-			"primary": {
-				"$type": {
-					"value": "color",
-					"type": "other"
-				},
-				"$value": {
-					"value": "{reference.color.pink}",
-					"type": "other",
-					"failedToResolve": true
-				}
-			},
-			"secondary": {
-				"$type": {
-					"value": "color",
-					"type": "other"
-				},
-				"$value": {
-					"value": "{reference.color.blue}",
-					"type": "other",
-					"failedToResolve": true
-				}
-			},
-			"tertiary": {
-				"$type": {
-					"value": "color",
-					"type": "other"
-				},
-				"$value": {
-					"value": "{reference.color.green}",
-					"type": "other",
-					"failedToResolve": true
-				}
-			}
-		}
-	},
-	"component": {
-		"color": {
-			"title-1": {
-				"$type": {
-					"value": "color",
-					"type": "other"
-				},
-				"$value": {
-					"value": "{system.color.secondary}",
-					"type": "other",
-					"failedToResolve": true
-				}
-			}
-		}
-	},
-	"tokenSetOrder": {
-		"0": {
-			"value": "global",
-			"type": "other"
-		}
-	}
+  "reference": {
+    "color": {
+      "pink": {
+        "$type": {
+          "value": "color",
+          "type": "other"
+        },
+        "$value": {
+          "value": "#ff99fa",
+          "type": "other"
+        }
+      },
+      "blue": {
+        "$type": {
+          "value": "color",
+          "type": "other"
+        },
+        "$value": {
+          "value": "#82d8ff",
+          "type": "other"
+        }
+      },
+      "green": {
+        "$type": {
+          "value": "color",
+          "type": "other"
+        },
+        "$value": {
+          "value": "#6bffce",
+          "type": "other"
+        }
+      }
+    }
+  },
+  "system": {
+    "color": {
+      "primary": {
+        "$type": {
+          "value": "color",
+          "type": "other"
+        },
+        "$value": {
+          "value": "{reference.color.pink}",
+          "type": "other",
+          "failedToResolve": true
+        }
+      },
+      "secondary": {
+        "$type": {
+          "value": "color",
+          "type": "other"
+        },
+        "$value": {
+          "value": "{reference.color.blue}",
+          "type": "other",
+          "failedToResolve": true
+        }
+      },
+      "tertiary": {
+        "$type": {
+          "value": "color",
+          "type": "other"
+        },
+        "$value": {
+          "value": "{reference.color.green}",
+          "type": "other",
+          "failedToResolve": true
+        }
+      }
+    }
+  },
+  "component": {
+    "color": {
+      "title-1": {
+        "$type": {
+          "value": "color",
+          "type": "other"
+        },
+        "$value": {
+          "value": "{system.color.secondary}",
+          "type": "other",
+          "failedToResolve": true
+        }
+      }
+    }
+  },
+  "tokenSetOrder": {
+    "0": {
+      "value": "global",
+      "type": "other"
+    }
+  }
 }
