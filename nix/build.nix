@@ -20,6 +20,7 @@ in
           description = mdDoc "Packages used to generate build the project";
           default = with pkgs; [
             nodejs_22
+            go-task
           ];
         };
       };

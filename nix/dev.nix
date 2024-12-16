@@ -1,5 +1,8 @@
 { ... }:
 {
+  imports = [
+    ./checks.nix
+  ];
   perSystem =
     {
       pkgs,
@@ -11,21 +14,16 @@
         nativeBuildInputs =
           with pkgs;
           [
-            go-task
             lefthook
             convco
             typos
             trufflehog
-            fd
-            yamlfmt
-            typos
-            treefmt
-            git
-            prefetch-npm-deps
           ]
-          ++ config.buildPackages;
+          ++ config.buildPackages
+          ++ config.checkPackages;
         shellHook = ''
           ${pkgs.go-task}/bin/task --verbose --output prefixed
+          printf "You can run project tasks using cli:\n  task\n\n"
           ${pkgs.go-task}/bin/task --list
         '';
       };

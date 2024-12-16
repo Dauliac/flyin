@@ -3,12 +3,13 @@ set: [errexit, pipefail, nounset]
 shopt: [globstar]
 tasks:
   default:
-    desc: ✅  Setup project
+    desc: 👍 Setup project
     silent: true
     run: "once"
     deps:
       - init:lefthooks
       - init:npm
+      - init:build-tokens
   init:lefthooks:
     silent: true
     internal: true
@@ -19,6 +20,20 @@ tasks:
       - ./lefthook.yml
       - ./flake.nix
       - ./flake.lock
+  init:build-tokens:
+    silent: true
+    internal: true
+    run: "once"
+    deps:
+      - init:npm
+    cmds:
+      - npm run build-tokens
+    sources:
+      - ./package-lock.json
+      - ./package.json
+      - ./config.js
+      - ./svelte.config.js
+      - ./tokens/**/*
   init:npm:
     silent: true
     internal: true
@@ -34,3 +49,57 @@ tasks:
     run: "once"
     cmds:
       - nix fmt
+  build:storybook:
+    silent: true
+    desc: 🎨 Build storybook
+    run: "once"
+    deps:
+      - init:build-tokens
+      - init:npm
+    cmds:
+      - npm run build-storybook
+  build:
+    silent: true
+    desc: 🧰 Build project
+    run: "once"
+    deps:
+      - init:build-tokens
+      - init:npm
+    cmds:
+      - npm run build
+  check:npm:
+    silent: true
+    run: "once"
+    internal: true
+    deps:
+      - init:build-tokens
+      - init:npm
+    cmds:
+      - npm run check
+  check:test:
+    desc: 🚗 Run project tests
+    silent: true
+    run: "once"
+    deps:
+      - init:build-tokens
+      - init:npm
+    cmds:
+      - npm run test
+  check:tailwind:
+    desc: 🎐 Run project tests
+    silent: true
+    run: "once"
+    deps:
+      - init:build-tokens
+      - init:npm
+    cmds:
+      - npm run build-tailwind
+  check:
+    desc: ✅ Run all project checks
+    silent: true
+    run: "once"
+    deps:
+      - check:npm
+      - check:test
+      - lint
+      - check:tailwind

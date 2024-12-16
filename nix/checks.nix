@@ -8,6 +8,9 @@ let
   inherit (inputs.flake-parts.lib) mkPerSystemOption;
 in
 {
+  imports = [
+    inputs.treefmt-nix.flakeModule
+  ];
   options.perSystem = mkPerSystemOption (
     {
       config,
@@ -16,11 +19,16 @@ in
     }:
     {
       options = {
-        buildPackages = mkOption {
-          description = mdDoc "Packages used to generate build the project";
-          default = with pkgs; [
-            nodejs_22
-          ];
+        checkPackages = mkOption {
+          description = mdDoc "Packages used to check the project";
+          default =
+            with pkgs;
+            [
+              git
+              typos
+              config.treefmt.build.wrapper
+            ]
+            ++ config.buildPackages;
         };
       };
     }
@@ -33,8 +41,16 @@ in
     }:
     {
       checks = {
-        unit-tests = pkgs.buildNpmPackage {
-          pname = "unit-tests";
+        check = pkgs.buildNpmPackage {
+          pname = "check";
+          version = (builtins.fromJSON (builtins.readFile ../package.json)).version;
+          src = ../.;
+          npmDeps = config.packages.npmDeps;
+          npmConfigHook = pkgs.importNpmLock.npmConfigHook;
+          npmBuildScript = "check";
+        };
+        test = pkgs.buildNpmPackage {
+          pname = "test";
           version = (builtins.fromJSON (builtins.readFile ../package.json)).version;
           src = ../.;
           npmDeps = config.packages.npmDeps;

@@ -25,10 +25,10 @@ pre-commit:
       stage_fixed: true
     build:
       tags: build
-      run: nix build --no-link
+      run: nix build --no-link --quiet
     build:storybook:
       tags: build
-      run: nix build '.#storybook' --no-link
+      run: nix build '.#storybook' --no-link --quiet
     checks:
       tags: build
-      run: nix flake check
+      run: nix flake check --quiet
