@@ -60,7 +60,7 @@
         }
       }
     },
-    "border": {
+    "shape": {
       "reference": {
         "radius001": {
           "value": "12",
@@ -93,12 +93,44 @@
         "fontSize004": {
           "value": "64",
           "type": "fontSizes"
+        },
+        "fontSize005": {
+          "value": "20",
+          "type": "fontSizes"
+        },
+        "fontSize006": {
+          "value": "14",
+          "type": "fontSizes"
+        }
+      },
+      "system": {
+        "sizeXXLarge": {
+          "value": "{typography.reference.fontSize003}",
+          "type": "fontSizes"
+        },
+        "sizeXLarge": {
+          "value": "{typography.reference.fontSize002}",
+          "type": "fontSizes"
+        },
+        "sizeLarge": {
+          "value": "{typography.reference.fontSize005}",
+          "type": "fontSizes"
+        },
+        "sizeMedium": {
+          "value": "{typography.reference.fontSize001}",
+          "type": "fontSizes"
+        },
+        "fontSizeSmall": {
+          "value": "{typography.reference.fontSize006}",
+          "type": "fontSizes"
         }
       }
     }
   },
   "$themes": [],
   "$metadata": {
-    "tokenSetOrder": ["global"]
+    "tokenSetOrder": [
+      "global"
+    ]
   }
 }
